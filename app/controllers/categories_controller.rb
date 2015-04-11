@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :create]
-  
+  before_action :authenticate_admin!, only: [:new, :edit, :update, :create]
   expose(:categories)
   expose(:category)
   expose(:product) { Product.new }
@@ -12,6 +12,7 @@ class CategoriesController < ApplicationController
   end
 
   def new
+    #redirect_to user_session_path unless current_user.admin?
   end
 
   def edit
@@ -43,5 +44,9 @@ class CategoriesController < ApplicationController
   private
     def category_params
       params.require(:category).permit(:name)
+    end
+
+    def authenticate_admin!
+      redirect_to user_session_path unless current_user.admin?
     end
 end
