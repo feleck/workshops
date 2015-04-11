@@ -4,6 +4,6 @@ Rails.application.routes.draw do
       resources :reviews
     end
   end
-
+  devise_for :users, controllers: { sessions: "users/sessions" }
   root 'categories#index'
 end

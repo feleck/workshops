@@ -40,4 +40,10 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
   config.infer_spec_type_from_file_location!
+  config.expect_with :rspec do |c|
+    c.syntax = [:should, :expect]
+  end
+    config.mock_with :rspec do |c|
+    c.syntax = [:should, :expect]
+  end
 end
