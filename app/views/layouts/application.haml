@@ -14,7 +14,9 @@
         .navbar-header
           %span.navbar-brand #{AppConfig.workshops_name}
         %p.navbar-text.navbar-right
-          Links should go here
+          =link_to 'Sign in', new_user_session_path unless user_signed_in?
+          =link_to 'Sign out', destroy_user_session_path if user_signed_in?
+          =link_to 'Sign up', new_user_registration_path unless user_signed_in?
     .container-fluid
       .row
         .col-lg-12
