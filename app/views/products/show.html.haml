@@ -16,9 +16,12 @@
       %p
         %b Average rating:
         = product.average_rating
-    = link_to 'Edit', edit_category_product_path(product.category.id, product.id), class: 'btn btn-primary' if current_user == product.user
+    
+    = link_to 'Edit', edit_category_product_path(product.category.id, product.id), 
+      class: 'btn btn-primary' if current_user == product.user
 
 = render 'reviews/form' if user_signed_in?
+
 .col-md-8
   = render reviews
 

@@ -7,6 +7,7 @@
       %tr
         %td= link_to product.title, category_product_path(category, product)
         - if user_signed_in?
-          %td= link_to 'Edit', edit_category_product_path(category, product), class: 'btn btn-default' if current_user == product.user
+          %td= link_to 'Edit', edit_category_product_path(category, product), 
+            class: 'btn btn-default' if current_user == product.user
           %td= link_to 'Destroy', category_product_path(category, product), 
             method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
