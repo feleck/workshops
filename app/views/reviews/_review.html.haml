@@ -1,4 +1,10 @@
-%p= review.content
-%p
-  %b= review.rating
-  %em= review.author
+.panel.panel-default.col-md-8
+  .panel-heading
+    %h4 
+      %em= review.author
+  .panel.body
+    %p= review.content
+    %p
+      Rating:
+      %b= review.rating
+      

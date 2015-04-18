@@ -1,20 +1,26 @@
-%p
-  %b Title:
-  = product.title
-%p
-  %b Description:
-  = product.description
-%p
-  %b Price:
-  = product.price
-%p
-  %b Category
-  = product.category.name
-= link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-primary'
+.panel.panel-default.col-md-8
+  .panel-heading
+    %h4 
+      = product.title
+  .panel.body
+    %p
+      %b Description:
+      = product.description
+    %p
+      %b Price:
+      = product.price
+    %p
+      %b Category:
+      = product.category.name
+    - if product.average_rating
+      %p
+        %b Average rating:
+        = product.average_rating
+    = link_to 'Edit', edit_category_product_path(product.category.id, product.id), class: 'btn btn-primary' if current_user == product.user
 
-%h3 Reviews
-= render 'reviews/form'
+= render 'reviews/form' if user_signed_in?
+.col-md-8
+  = render reviews
 
-= render reviews
-%br
-= link_to 'Back', category_path(product.category), class: 'btn btn-primary'
+.col-md-8
+  = link_to 'Back', category_path(product.category), class: 'btn btn-primary'

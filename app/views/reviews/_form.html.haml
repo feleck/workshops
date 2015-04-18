@@ -1,14 +1,19 @@
-= simple_form_for [category, product, review] do |f|
-  - if review.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(review.errors.count, "error")} prohibited this review from being saved:"
-      %ul
-        - review.errors.full_messages.each do |msg|
-          %li= msg
-  .form-group
-    = f.label :content
-    = f.text_area :content, class: 'form-control'
-  .form-group
-    = f.input :rating, collection: 1..5, class: 'form-control'
+.panel.panel-default.col-md-6
+  .panel-heading
+    %h4 Reviews
+  .panel.body
+    = simple_form_for [category, product, review] do |f|
+      - if review.errors.any?
+        #error_explanation
+        .alert.alert-danger
+          %h2= "#{pluralize(review.errors.count, "error")} prohibited this review from being saved:"
+          %ul
+            - review.errors.full_messages.each do |msg|
+              %li= msg
+      .form-group
+        = f.label :content
+        = f.text_area :content, class: 'form-control', required: true, autofocus: true, placeholder: "Enter content"
+      .form-group
+        = f.input :rating, collection: 1..5, class: 'form-control', required: true, option: "Choose rating"
 
-  = f.submit 'Save', class: 'btn btn-default'
+      = f.submit 'Save', class: 'btn btn-primary'

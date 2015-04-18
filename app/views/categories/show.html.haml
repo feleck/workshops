@@ -7,9 +7,8 @@
 
 = render 'products'
 
-- if user_signed_in? && current_user.admin?
-  %p
-    %h3 New product
-    = render 'products/form'
+- if user_signed_in?# && current_user.admin?
+  = render 'products/form'
 
-= link_to 'Back', categories_path, class: 'btn btn-primary'
+.col-md-8
+  = link_to 'Back', categories_path, class: 'btn btn-primary'
