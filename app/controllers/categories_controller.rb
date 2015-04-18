@@ -12,7 +12,6 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    #redirect_to user_session_path unless current_user.admin?
   end
 
   def edit
@@ -47,6 +46,11 @@ class CategoriesController < ApplicationController
     end
 
     def authenticate_admin!
-      redirect_to user_session_path unless current_user.admin?
+      if !user_signed_in?
+        redirect_to new_user_session_path
+      elsif !current_user.admin?
+        redirect_to new_user_session_path, alert: 'Only admin can do this!'
+        # if user signed_in it is further redirected to categories#index page with notice "Already sigend in"
+      end
     end
 end
