@@ -2,7 +2,7 @@ class ReviewDecorator < Draper::Decorator
   delegate_all
 
   def author
-    [self.user.firstname, self.user.lastname].join(' ') if self.user.firstname && self.user.lastname
+    [user.firstname, user.lastname].join(' ') if user.firstname && user.lastname
   end
 
 end
