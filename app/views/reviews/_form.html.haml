@@ -1,6 +1,6 @@
-.panel.panel-default.col-md-6
+.panel.panel-default
   .panel-heading
-    %h4 Reviews
+    %h4 Add review
   .panel.body
     = simple_form_for [category, product, review] do |f|
       - if review.errors.any?

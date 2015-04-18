@@ -9,19 +9,7 @@
     = link_to 'Edit', edit_user_registration_path(user), class: 'btn btn-primary'
 
 - if user.reviews.count > 0
-  .panel.panel-default.col-md-6
-    .panel-heading
-      %h4 
-        Reviews
-    .panel.body
-    - user.reviews.last(5).each do |review|
-      %p
-        = review.created_at.strftime("%d-%m-%y")
-        = review.content
-        %p
-          Rating:
-          = review.rating
-      %hr
+  =render 'review'
 
 .col-md-8
   = link_to 'Back', categories_path, class: 'btn btn-primary'

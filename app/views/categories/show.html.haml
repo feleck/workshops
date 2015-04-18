@@ -1,9 +1,8 @@
-%p#notice= notice
-
 %h3
   %b Category:
   = category.name
-  = link_to 'Edit', edit_category_path(category), class: 'btn btn-default' if user_signed_in? && current_user.admin?
+  = link_to 'Edit', edit_category_path(category), 
+    class: 'btn btn-primary' if user_signed_in? && current_user.admin?
 
 = render 'products'
 

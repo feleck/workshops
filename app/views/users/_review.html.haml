@@ -1,0 +1,13 @@
+.panel.panel-default.col-md-6
+  .panel-heading
+    %h4 
+      Reviews
+  .panel.body
+  - user.reviews.last(5).each do |review|
+    %p
+      = review.created_at.strftime("%d-%m-%y")
+      = review.content
+      %p
+        Rating:
+        = review.rating
+    %hr
