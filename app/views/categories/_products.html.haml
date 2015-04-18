@@ -1,0 +1,8 @@
+%h4 Products:
+%table.table.table-striped
+  - category.products.each do |product|
+    %tr
+      %td= link_to product.title, category_product_path(category, product)
+      - if user_signed_in? && current_user.admin?
+        %td= link_to 'Edit', edit_category_product_path(category, product), class: 'btn btn-default'
+        %td= link_to 'Destroy', category_product_path(category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
