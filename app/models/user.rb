@@ -6,7 +6,11 @@ class User < ActiveRecord::Base
   validates :firstname, presence: true
   validates :lastname, presence: true
   
-
   has_many :reviews
   has_many :products
+
+  def fullname
+    [firstname, lastname].join(' ') if firstname && lastname
+  end
+
 end

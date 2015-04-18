@@ -10,7 +10,11 @@ class Product < ActiveRecord::Base
 
   def average_rating
     ratings = self.reviews.all.collect { |review| review.rating }
-    ratings.inject { |sum, rating| sum + rating }.to_f / ratings.size
+    unless ratings.empty?
+      return ratings.inject { |sum, rating| sum + rating }.to_f / ratings.size
+    else
+      return nil
+    end
   end
 
 end
